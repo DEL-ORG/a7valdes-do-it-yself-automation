@@ -1,7 +1,7 @@
 catalog:
   tag: "ffe1df"
 orders_db:
-  tag: "ce3903"
+  tag: "84c83a"
 catalog_db:
   tag: "ffe1df"
 cart:
@@ -22,3 +22,7 @@ ui:
   tag: "d7dbb2"
 checkout_api:
   tag: 0954cf
+orders_rabbitmq:
+  tag: 84c83a
+orders_api:
+  tag: 84c83a

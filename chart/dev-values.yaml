@@ -3,7 +3,7 @@ catalog:
 orders_db:
   tag: "84c83a"
 catalog_db:
-  tag: "ffe1df"
+  tag: "22693"
 cart:
   tag: "69e73f"
 cart_dynamodb:
@@ -26,3 +26,5 @@ orders_rabbitmq:
   tag: 84c83a
 orders_api:
   tag: 84c83a
+catalog_api:
+  tag: "22693"

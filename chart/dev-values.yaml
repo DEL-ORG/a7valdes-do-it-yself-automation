@@ -17,7 +17,7 @@ checkout:
 checkout_db:
   tag: "0954cf"
 assets:
-  tag: "4c2902"
+  tag: "c0c7d9"
 ui:
   tag: "d7dbb2"
 checkout_api:

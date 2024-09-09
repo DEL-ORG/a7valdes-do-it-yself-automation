@@ -1,22 +1,39 @@
 catalog:
   tag: "ffe1df"
 orders_db:
-  tag: "73e2b2"
+  tag: "84c83a"
 catalog_db:
-  tag: "ffe1df"
+  tag: "22693"
 cart:
-  tag: "69e73f"
+  tag: "8a0ede"
 cart_dynamodb:
+<<<<<<< HEAD
   tag: "69e73f"
 orders_api:
   tag: "73e2b2"
 orders_rabbitmq:
   tag: "73e2b2"
 checkout_api:
+=======
+  tag: "8a0ede"
+orders:
+  tag: "ce3903"
+orders_db_rabbitmq:
+  tag: "ce3903"
+checkout:
+>>>>>>> 8bc30ec4f956357ff31791210a210d0a35699283
   tag: "b45290"
 checkout_db:
-  tag: "b45290"
+  tag: "0954cf"
 assets:
-  tag: "4c2902"
+  tag: "c0c7d9"
 ui:
-  tag: "9bc65e"
+  tag: "d7dbb2"
+checkout_api:
+  tag: 0954cf
+orders_rabbitmq:
+  tag: 84c83a
+orders_api:
+  tag: 84c83a
+catalog_api:
+  tag: "22693"

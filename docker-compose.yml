@@ -13,7 +13,7 @@ services:
       - ENDPOINTS_CHECKOUT=http://checkout:8080
       - ENDPOINTS_ASSETS=http://assets:8080
     hostname: ui
-    image: devopseasylearning/eric-do-it-yourself-ui:${UI}
+    image: versage/valdes_do_it_yourself_ui:ui${BUILD-NUMBER}
     restart: always
     deploy:
       resources:

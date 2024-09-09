@@ -4,9 +4,9 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('del-docker-hub-auth')
     }
     options {
-        buildDiscarder(logRotator(numToKeepStr: '20'))
+        buildDiscarder(logRotator(numToKeepStr: '5'))
         disableConcurrentBuilds()
-        timeout(time: 60, unit: 'MINUTES')
+        timeout(time: 10, unit: 'MINUTES')
         timestamps()
     }
     stages {
@@ -81,11 +81,11 @@ pipeline {
 
             steps {
                 sh '''
-                rm -rf Eric-do-it-yourself-UI || true
-                git clone -b ${BRANCH_UI} git@github.com:DEL-ORG/Eric-do-it-yourself-UI.git
-                cd ${WORKSPACE}/Eric-do-it-yourself-UI/ui
-                docker build -t devopseasylearning/eric_do_it_yourself_ui:${BUILD_NUMBER} .
-                docker push  devopseasylearning/eric_do_it_yourself_ui:${BUILD_NUMBER}
+                rm -rf s7valdes-do-it-yourself-UI || true
+                git clone -b ${BRANCH_UI} git@github.com:DEL-ORG/s7valdes-do-it-yourself-UI.git
+                cd ${WORKSPACE}/s7valdes-do-it-yourself-UI/ui
+                docker build -t versage/valdes_do_it_yourself_ui:${BUILD_NUMBER} .
+                docker push  versage/valdes_do_it_yourself_ui:${BUILD_NUMBER}
                 '''
             }
         }
@@ -96,15 +96,15 @@ pipeline {
 
             steps {
                 sh '''
-                rm -rf Eric-do-it-yourself-Orders || true
-                git clone -b ${BRANCH_ORDERS} git@github.com:DEL-ORG/Eric-do-it-yourself-Orders.git
-                cd ${WORKSPACE}/Eric-do-it-yourself-Orders/orders
-                docker build -t devopseasylearning/eric_do_it_yourself_orders:${BUILD_NUMBER} .
-                docker build -t devopseasylearning/eric_do_it_yourself_orders_db:${BUILD_NUMBER} . -f Dockerfile-db
-                docker build -t devopseasylearning/eric_do_it_yourself_orders_db_rabbitmq:${BUILD_NUMBER} . -f Dockerfile-rabbit-mq
-                docker push  devopseasylearning/eric_do_it_yourself_orders:${BUILD_NUMBER}
-                docker push devopseasylearning/eric_do_it_yourself_orders_db:${BUILD_NUMBER}
-                docker push devopseasylearning/eric_do_it_yourself_orders_db_rabbitmq:${BUILD_NUMBER}
+                rm -rf s7valdes-do-it-yourself-Orders || true
+                git clone -b ${BRANCH_ORDERS} git@github.com:DEL-ORG/s7valdes-do-it-yourself-Orders.git
+                cd ${WORKSPACE}/s7valdes-do-it-yourself-Orders/orders
+                docker build -t versage/valdes_do_it_yourself_orders:${BUILD_NUMBER} .
+                docker build -t versage/valdes_do_it_yourself_orders_db:${BUILD_NUMBER} . -f Dockerfile-db
+                docker build -t versage/valdes_do_it_yourself_orders_db_rabbitmq:${BUILD_NUMBER} . -f Dockerfile-rabbit-mq
+                docker push  versage/valdes_do_it_yourself_orders:${BUILD_NUMBER}
+                docker push versage/valdes_do_it_yourself_orders_db:${BUILD_NUMBER}
+                docker push versage/valdes_do_it_yourself_orders_db_rabbitmq:${BUILD_NUMBER}
                 '''
             }
         }
@@ -114,13 +114,13 @@ pipeline {
 
             steps {
                 sh '''
-                rm -rf Eric-do-it-yourself-Checkout || true
-                git clone -b ${BRANCH_CHECKOUT} git@github.com:DEL-ORG/Eric-do-it-yourself-Checkout.git
-                cd ${WORKSPACE}/Eric-do-it-yourself-Checkout/checkout
-                docker build  -t devopseasylearning/eric_do_it_yourself_checkout:${BUILD_NUMBER} .
-                docker build  -t devopseasylearning/eric_do_it_yourself_checkout_db:${BUILD_NUMBER} . -f Dockerfile-db
-                docker push  devopseasylearning/eric_do_it_yourself_checkout:${BUILD_NUMBER}
-                docker push devopseasylearning/eric_do_it_yourself_checkout_db:${BUILD_NUMBER}
+                rm -rf s7valdes-do-it-yourself-Checkout || true
+                git clone -b ${BRANCH_CHECKOUT} git@github.com:DEL-ORG/s7valdes-do-it-yourself-Checkout.git
+                cd ${WORKSPACE}/s7valdes-do-it-yourself-Checkout/checkout
+                docker build  -t versage/valdes_do_it_yourself_checkout:${BUILD_NUMBER} .
+                docker build  -t versage/valdes_do_it_yourself_checkout_db:${BUILD_NUMBER} . -f Dockerfile-db
+                docker push  versage/valdes_do_it_yourself_checkout:${BUILD_NUMBER}
+                docker push versage/valdes_do_it_yourself_checkout_db:${BUILD_NUMBER}
                 '''
             }
         }
@@ -130,13 +130,13 @@ pipeline {
 
             steps {
                 sh '''
-                rm -rf Eric-do-it-yourself-Catalog || true
-                git clone -b ${BRANCH_CATALOG} git@github.com:DEL-ORG/Eric-do-it-yourself-Catalog.git
-                cd ${WORKSPACE}/Eric-do-it-yourself-Catalog/catalog
-                docker build  -t devopseasylearning/eric_do_it_yourself_catalog:${BUILD_NUMBER} .
-                docker build  -t devopseasylearning/eric_do_it_yourself_catalog_db:${BUILD_NUMBER} . -f Dockerfile-db
-                docker push  devopseasylearning/eric_do_it_yourself_catalog:${BUILD_NUMBER}
-                docker push devopseasylearning/eric_do_it_yourself_catalog_db:${BUILD_NUMBER}
+                rm -rf s7valdes-do-it-yourself-Catalog || true
+                git clone -b ${BRANCH_CATALOG} git@github.com:DEL-ORG/s7valdes-do-it-yourself-Catalog.git
+                cd ${WORKSPACE}/s7valdes-do-it-yourself-Catalog/catalog
+                docker build  -t versage/valdes_do_it_yourself_catalog:${BUILD_NUMBER} .
+                docker build  -t versage/valdes_do_it_yourself_catalog_db:${BUILD_NUMBER} . -f Dockerfile-db
+                docker push  versage/valdes_do_it_yourself_catalog:${BUILD_NUMBER}
+                docker push versage/valdes_do_it_yourself_catalog_db:${BUILD_NUMBER}
 
                 '''
             }
@@ -147,13 +147,13 @@ pipeline {
 
             steps {
                 sh '''
-                rm -rf Eric-do-it-yourself-Cart || true
-                git clone -b ${BRANCH_CART} git@github.com:DEL-ORG/Eric-do-it-yourself-Cart.git
-                cd ${WORKSPACE}/Eric-do-it-yourself-Cart/cart
-                docker  build -t devopseasylearning/eric_do_it_yourself_cart:${BUILD_NUMBER} .
-                docker  build -t devopseasylearning/eric_do_it_yourself_cart_dynamodb:${BUILD_NUMBER} . -f Dockerfile-dynamodb 
-                docker push  devopseasylearning/eric_do_it_yourself_cart:${BUILD_NUMBER}
-                docker push devopseasylearning/eric_do_it_yourself_cart_dynamodb:${BUILD_NUMBER}
+                rm -rf s7valdes-do-it-yourself-Cart || true
+                git clone -b ${BRANCH_CART} git@github.com:DEL-ORG/s7valdes-do-it-yourself-Cart.git
+                cd ${WORKSPACE}/s7valdes-do-it-yourself-Cart/cart
+                docker  build -t versage/valdes_do_it_yourself_cart:${BUILD_NUMBER} .
+                docker  build -t versage/valdes_do_it_yourself_cart_dynamodb:${BUILD_NUMBER} . -f Dockerfile-dynamodb 
+                docker push  versage/valdes_do_it_yourself_cart:${BUILD_NUMBER}
+                docker push versage/valdes_do_it_yourself_cart_dynamodb:${BUILD_NUMBER}
 
                 '''
             }
@@ -163,11 +163,11 @@ pipeline {
 
             steps {
                 sh '''
-                rm -rf Eric-do-it-yourself-Assets || true
-                git clone -b ${BRANCH_ASSETS} git@github.com:DEL-ORG/Eric-do-it-yourself-Assets.git
-                cd ${WORKSPACE}/Eric-do-it-yourself-Assets/assets
-                docker build -t devopseasylearning/eric_do_it_yourself_assets:${BUILD_NUMBER} .
-                docker push devopseasylearning/eric_do_it_yourself_assets:${BUILD_NUMBER}
+                rm -rf s7valdes-do-it-yourself-Assets || true
+                git clone -b ${BRANCH_ASSETS} git@github.com:DEL-ORG/s7valdes-do-it-yourself-Assets.git
+                cd ${WORKSPACE}/s7valdes-do-it-yourself-Assets/assets
+                docker build -t versage/valdes_do_it_yourself_assets:${BUILD_NUMBER} .
+                docker push versage/valdes_do_it_yourself_assets:${BUILD_NUMBER}
 
                 '''
             }
@@ -177,23 +177,23 @@ stage('trigger-deployment') {
     steps {
         sh '''
             TAG=${BUILD_NUMBER}
-            rm -rf Eric-do-it-yourself-devops-automation || true
-            git clone git@github.com:DEL-ORG/Eric-do-it-yourself-devops-automation.git 
-            cd Eric-do-it-yourself-devops-automation/chart
+            rm -rf s7valdes-do-it-yourself-devops-automation || true
+            git clone git@github.com:DEL-ORG/s7valdes-do-it-yourself-devops-automation.git 
+            cd s7valdes-do-it-yourself-devops-automation/chart
             yq eval '.ui.tag = "'"$TAG"'"' -i branch-values.yaml
             yq eval '.assets.tag = "'"$TAG"'"' -i branch-values.yaml
             yq eval '.checkout_db.tag = "'"$TAG"'"' -i branch-values.yaml
-            yq eval '.checkout.tag = "'"$TAG"'"' -i branch-values.yaml
-            yq eval '.orders_db_rabbitmq.tag = "'"$TAG"'"' -i branch-values.yaml
-            yq eval '.orders.tag = "'"$TAG"'"' -i branch-values.yaml
+            yq eval '.checkout_api.tag = "'"$TAG"'"' -i branch-values.yaml
+            yq eval '.orders_rabbitmq.tag = "'"$TAG"'"' -i branch-values.yaml
+            yq eval '.orders_api.tag = "'"$TAG"'"' -i branch-values.yaml
             yq eval '.cart_dynamodb.tag = "'"$TAG"'"' -i branch-values.yaml
             yq eval '.cart.tag = "'"$TAG"'"' -i branch-values.yaml
             yq eval '.catalog_db.tag = "'"$TAG"'"' -i branch-values.yaml
             yq eval '.orders_db.tag = "'"$TAG"'"' -i branch-values.yaml
             yq eval '.catalog.tag = "'"$TAG"'"' -i branch-values.yaml
 
-            git config --global user.name "devopseasylearning"
-            git config --global user.email info@devopseasylearning.com
+            git config --global user.name "versage1"
+            git config --global user.email "tiayosahav@gmail.com"
             
             git add -A
             if git diff-index --quiet HEAD; then
@@ -212,15 +212,15 @@ stage('trigger-deployment') {
 
     post {
         success {
-            slackSend(channel: '#development-alerts', color: 'good', message: "SUCCESSFUL: Application Eric-do-it-yourself-UI  Job '${env.JOB_NAME} [${env.TAG}]' (${env.BUILD_URL})")
+            slackSend(channel: '#development-alerts', color: 'good', message: "SUCCESSFUL: Application s7valdes-do-it-yourself-UI  Job '${env.JOB_NAME} [${env.TAG}]' (${env.BUILD_URL})")
         }
 
         unstable {
-            slackSend(channel: '#development-alerts', color: 'warning', message: "UNSTABLE: Application Eric-do-it-yourself-UI  Job '${env.JOB_NAME} [${env.TAG}]' (${env.BUILD_URL})")
+            slackSend(channel: '#development-alerts', color: 'warning', message: "UNSTABLE: Application s7valdes-do-it-yourself-UI  Job '${env.JOB_NAME} [${env.TAG}]' (${env.BUILD_URL})")
         }
 
         failure {
-            slackSend(channel: '#development-alerts', color: '#FF0000', message: "FAILURE: Application Eric-do-it-yourself-UI Job '${env.JOB_NAME} [${env.TAG}]' (${env.BUILD_URL})")
+            slackSend(channel: '#development-alerts', color: '#FF0000', message: "FAILURE: Application s7valdes-do-it-yourself-UI Job '${env.JOB_NAME} [${env.TAG}]' (${env.BUILD_URL})")
         }
 
         cleanup {

@@ -11,9 +11,9 @@ cart:
   tag: 0.8.1  
 cart_dynamodb:
   tag: 1.13.1 
-orders:
+orders_api:
   tag: 0.8.1
-orders_db_rabbitmq:
+orders_rabbitmq:
   tag: 3-manage
 checkout:
   tag: 0.8.1

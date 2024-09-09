@@ -8,11 +8,11 @@ cart:
   tag: "69e73f"
 cart_dynamodb:
   tag: "69e73f"
-orders:
+orders_api:
   tag: "73e2b2"
-orders_db_rabbitmq:
+orders_rabbitmq:
   tag: "73e2b2"
-checkout:
+checkout_api:
   tag: "b45290"
 checkout_db:
   tag: "b45290"

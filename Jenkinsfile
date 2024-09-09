@@ -8,7 +8,7 @@ pipeline {
             steps {
                 sh '''
             rm -rf ~/deployment || true
-            git clone git@github.com:DEL-ORG/Eric-do-it-yourself-devops-automation.git ~/deployment
+            git clone git@github.com:DEL-ORG/s7valdes-do-it-yself-automation.git ~/deployment
                 '''
             }
         }
